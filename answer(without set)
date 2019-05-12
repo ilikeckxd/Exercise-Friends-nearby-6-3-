@@ -1,0 +1,25 @@
+#從user得到一串string以空格分離
+#拿去跟people.txt比對 重複的放到near_by_friends.txt
+
+friends_list = input('enter 3 friends, split by space: ').split(' ')  ###
+print(friends_list)
+
+
+def write_list_into_file(a_list, file_name_str):
+    file = open(file_name_str, 'w')
+    for people in a_list:
+        file.write(f'{people}\n')
+    file.close()
+
+
+#決定nearby有誰 也就是people.txt裡有誰
+people_nearby_list = ['a', 'c', 'd', 'e']
+write_list_into_file(people_nearby_list, 'people.txt')
+
+
+file_nearby = open('people.txt', 'r')
+nearby_list = file_nearby.readlines()
+print(nearby_list)  #每個尾巴都有\n
+nearby_f_list = [friend for friend in friends_list if nearby_list.count(friend+'\n') != 0]
+write_list_into_file(nearby_f_list, 'near_by_friends.txt')
+print(nearby_f_list)
