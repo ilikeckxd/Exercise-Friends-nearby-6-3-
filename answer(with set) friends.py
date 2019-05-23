@@ -42,7 +42,15 @@ for friend in nearby_f_list:
     print(f'{friend} is nearby, meet up with them!')
     
 
-'''
 
 
 # 使用enumerate函數 讓每行都有\n 除了最後一行
+def write_list_into_file(a_list, file_name_str):
+    with open(file_name_str, 'w') as file:
+        for i, people in enumerate(a_list):
+            if i != len(a_list)-1:
+                file.write(f'{people}\n')
+            else:
+                file.write(f'{people}.')
+
+'''
